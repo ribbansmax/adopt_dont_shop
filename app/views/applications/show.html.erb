@@ -1,0 +1,10 @@
+<section class="info">
+<h2>Status: <%= @application.status%></h2>
+<h1>Name: <%= @application.name%></h1>
+<h2>Address<br>____________<br></h2><h3><%= @application.address%></h3>
+<h2>Description<br>____________<br></h2><h3><%= @application.description%></h3>
+<h2>Pets<br>____________<br></h2>
+<% @application.pets.each do |pet|%>
+<h3>Name: <%= link_to pet.name, pet_path(pet.id)%></h3>
+<% end%>
+</section>

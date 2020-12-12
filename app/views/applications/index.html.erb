@@ -1,0 +1,15 @@
+<h1>All Pets</h1>
+
+<% @applications.each do |app| %>
+  <% if pet.adoptable == true %>
+  <section id="pet-<%=app.id%>">
+      <h2>name: <%= link_to "#{app.name}", "/apps/#{app.id}" %></h2>
+      <%= image_tag "#{app.image}" %><br>
+      approx age: <%= app.approximate_age %><br>
+      sex: <%= app.sex%><br>
+      shelter: <%= link_to "#{app.shelter.name}", "shelters/#{app.shelter.id}" %><br>
+      <a href="/apps/<%= app.id %>/edit">Update app</a>
+      <%= link_to "Delete app", "/apps/#{app.id}", method: :delete %><br>
+    </section>
+  <% end %>
+<% end %>

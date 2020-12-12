@@ -15,4 +15,8 @@ class Application < ApplicationRecord
       "In Progress"
     end
   end
+
+  def address
+    "#{self.street_address} #{self.city}, #{self.state} #{self.zip}"
+  end
 end
