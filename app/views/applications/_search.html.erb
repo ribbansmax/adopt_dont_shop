@@ -1,0 +1,17 @@
+<h3>Add Pet to Application<br>____________<br></h3>
+<%= form_tag show_app_path, method: :get do %>
+  <%= label_tag "Search pets by name:" %>
+  <%= text_field_tag "search"%>
+  <%= submit_tag 'search' %>
+<% end %>
+
+<h3>
+<% @found_pets.each do |pet|%>
+  <%= link_to "#{pet.name}", pet_path(pet.id)%>
+  <%= form_tag "/adoptions", method: :post do %>
+  <%= hidden_field_tag :pet_id, "#{pet.id}" %>
+  <%= hidden_field_tag :app_id, "#{params[:id]}" %>
+  <%= submit_tag 'adopt this pet'%>
+  <% end%>
+<% end%>
+</h3>

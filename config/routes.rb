@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   get "/pets", to: "pets#index"
-  get "/pets/:id", to: "pets#show", as: 'pet_path'
+  get "/pets/:id", to: "pets#show", as: 'pet'
   get "/pets/:id/edit", to: "pets#edit"
   patch "/pets/:id", to: "pets#update"
   delete "/pets/:id", to: "pets#destroy"
@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   get "/applications/new", to: "applications#new", as: 'new_app'
   get "/applications/:id", to: "applications#show", as: 'show_app'
   post '/applications', to: 'applications#create', as: 'create_app'
+  patch "/applications/:id", to: 'applications#update', as: 'update_app'
+
+  resources :adoptions, only: [:create]
 
 end

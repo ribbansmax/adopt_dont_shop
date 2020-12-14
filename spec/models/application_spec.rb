@@ -32,5 +32,26 @@ describe Application, type: :model do
         expect(app.status).to eq("Approved")
       end
     end
+
+    describe '.address' do
+      it 'can group the address' do
+        app = Application.create(name: "Jem", street_address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
+
+        expect(app.address).to eq("#{app.street_address} #{app.city}, #{app.state} #{app.zip}")
+      end
+    end
+  end
+
+  describe 'Class Methods' do
+    describe 'Search' do
+      it 'can search by name' do
+        app = Application.create(name: "Jem", street_address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
+
+        FactoryBot.create_list(:application, 5)
+
+        expect(Application.search("abcdefg").first).to eq(nil)
+        expect(Application.search("Jem").first).to eq(app)
+      end
+    end
   end
 end
