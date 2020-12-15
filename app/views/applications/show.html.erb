@@ -1,4 +1,9 @@
 <section class="info">
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 <h2>Status: <%= @application.status%></h2>
 <h1>Name: <%= @application.name%></h1>
 <h2>Address<br>____________<br></h2><h3><%= @application.address%></h3>

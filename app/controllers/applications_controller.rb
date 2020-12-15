@@ -1,16 +1,14 @@
 class ApplicationsController < ApplicationController
   include EmptyForm
   
-  def index
-    @applications = Application.all
-  end
+  # def index
+  #   @applications = Application.all
+  # end
 
   def show
     @application = Application.find(params[:id])
     if params["commit"] == "search"
       @found_pets = Pet.search(search_params[:search])
-    elsif params["commit"] == 'adopt this pet'
-      @application.add_pet(para)
     else
       @found_pets = []
     end
@@ -18,9 +16,7 @@ class ApplicationsController < ApplicationController
 
   def update
     application = Application.find(params[:id])
-    if application.pets.empty?
-      redirect_to show_app_path, notice: "Please submit once you have finished choosing pets to adopt."
-    elsif params["describe"].length <= 10
+    if params["describe"].length <= 10
       redirect_to show_app_path, notice: "Please submit once you have described why you are a good choice for these pets."
     else
       application.update!(completed: :true, description: params[:describe])
@@ -29,7 +25,6 @@ class ApplicationsController < ApplicationController
   end
 
   def add_pet
-    binding.pry
     Adoption.create!(application_id: params[:id], pet_id: params[:pet_id])
     redirect_to show_app_path(params[:id])
   end
