@@ -1,9 +1,5 @@
 class ApplicationsController < ApplicationController
   include EmptyForm
-  
-  # def index
-  #   @applications = Application.all
-  # end
 
   def show
     @application = Application.find(params[:id])
@@ -22,11 +18,6 @@ class ApplicationsController < ApplicationController
       application.update!(completed: :true, description: params[:describe])
       redirect_to show_app_path
     end
-  end
-
-  def add_pet
-    Adoption.create!(application_id: params[:id], pet_id: params[:pet_id])
-    redirect_to show_app_path(params[:id])
   end
 
   def new
