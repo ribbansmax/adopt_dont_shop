@@ -10,13 +10,10 @@ RSpec.describe Admin, type: :model do
 
       adoption = Adoption.create!(pet_id: pet.id, application_id: app.id)
 
-      expect(pet.adoptable).to eq(true)
+      expect(adoption.approved).to eq(nil)
       Admin.approve(adoption)
-      # binding.pry
-      pet.reload
-      puts pet.adoptable
 
-      expect(pet.adoptable).to eq(false)
+      expect(adoption.approved).to eq(true)
     end
   end
 end

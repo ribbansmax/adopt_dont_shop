@@ -1,8 +1,6 @@
-class Admin 
-  # < ApplicationRecord
+class Admin < ApplicationRecord
   def self.approve(ad)
-    adopted = Pet.find(ad.pet_id)
-    # binding.pry
-    adopted.update!(adoptable: false)
+    adopted = ad
+    adopted.update!(approved: true)
   end
 end
