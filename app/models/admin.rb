@@ -1,6 +1,5 @@
 class Admin < ApplicationRecord
-  def self.approve(ad)
-    adopted = ad
+  def self.approve(adopted)
     adopted.update!(approved: true)
   end
 end

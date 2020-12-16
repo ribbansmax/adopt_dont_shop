@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   post '/applications', to: 'applications#create', as: 'create_app'
   patch "/applications/:id", to: 'applications#update', as: 'update_app'
 
-  resources :adoptions, only: [:create]
+  resources :adoptions, only: [:create, :update]
 
   namespace :admin do
     resources :applications, only: [:show]
