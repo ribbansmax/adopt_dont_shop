@@ -18,12 +18,33 @@ RSpec.describe 'Admin Application show page' do
   it "Can approve adoption" do
     visit "/admin/applications/#{@app1.id}"
 
-    expect(page).to have_button("#{@pet1.name}")
+    expect(page).to have_button("Approve #{@pet1.name}")
 
-    click_button "#{@pet1.name}"
+    click_button "Approve #{@pet1.name}"
 
     expect(current_path).to eq "/admin/applications/#{@app1.id}"
-    expect(page).to have_no_button("#{@pet1.name}")
-    expect(page).to have_content("#{@pet1.name} is approved")
+    expect(page).to have_no_button("Approve #{@pet1.name}")
+    expect(page).to have_content("#{@pet1.name} Approved!")
+  end
+
+  it "Can reject adoption" do
+    visit "/admin/applications/#{@app1.id}"
+
+    expect(page).to have_button("Reject #{@pet1.name}")
+
+    click_button "Reject #{@pet1.name}"
+
+    expect(current_path).to eq "/admin/applications/#{@app1.id}"
+    expect(page).to have_no_button("Reject #{@pet1.name}")
+    expect(page).to have_content("#{@pet1.name} Rejected!")
+  end
+
+  it "Can show approved application" do
+    visit "/admin/applications/#{@app1.id}"
+    
+    click_button "Approve #{@pet1.name}"
+    click_button "Approve #{@pet2.name}"
+
+    expect(page).to have_content("Application Status: Approved")
   end
 end
