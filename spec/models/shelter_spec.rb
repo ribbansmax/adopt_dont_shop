@@ -25,4 +25,14 @@ describe Shelter, type: :model do
 
     expect(Shelter.pending).to eq([@shelter1, @shelter2])
   end
+
+  it 'Can calculate the average age of pets' do
+    @shelter1 = Shelter.create!(name: "Shady Shelter", address: "123 Shady Ave", city: "Denver", state: "CO", zip: 80011)
+    
+    @pet1 = @shelter1.pets.create!(image:"", name: "Thor", description: "dog", approximate_age: 2, sex: "male")
+    @pet2 = @shelter1.pets.create!(image:"", name: "Athena", description: "cat", approximate_age: 3, sex: "female")
+    @pet3 = @shelter1.pets.create!(image:"", name: "Zeus", description: "dog", approximate_age: 4, sex: "male")
+
+    expect(@shelter1.average_pet_age).to eq(3)
+  end
 end
