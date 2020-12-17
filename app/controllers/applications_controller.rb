@@ -35,7 +35,7 @@ class ApplicationsController < ApplicationController
   private
 
   def application_params
-    params.permit(:name, :street_address, :city, :state, :zip)
+    params.permit(:name, :address, :city, :state, :zip)
   end
 
   def search_params

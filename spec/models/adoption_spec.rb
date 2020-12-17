@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Adoption, type: :model do
   before :each do
-    @app1 = Application.create!(name: "Dunlap", street_address: "104 Pine Haven", city: "Colchester", state: "VT", zip: "05446")
-    @app2 = Application.create!(name: "Karen", street_address: "15 Quincy", city: "Somerville", state: "MA", zip: "02143")
-    @app3 = Application.create!(name: "Ezra", street_address: "14 alley", city: "Greensboro", state: "VT", zip: "09802")
+    @app1 = Application.create!(name: "Dunlap", address: "104 Pine Haven", city: "Colchester", state: "VT", zip: "05446")
+    @app2 = Application.create!(name: "Karen", address: "15 Quincy", city: "Somerville", state: "MA", zip: "02143")
+    @app3 = Application.create!(name: "Ezra", address: "14 alley", city: "Greensboro", state: "VT", zip: "09802")
 
     @shelter1 = Shelter.create!(name: "Shady Shelter", address: "123 Shady Ave", city: "Denver", state: "CO", zip: 80011)
     @pet1 = @shelter1.pets.create!(image:"", name: "Thor", description: "dog", approximate_age: 2, sex: "male")

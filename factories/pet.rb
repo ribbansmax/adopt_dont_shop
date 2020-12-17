@@ -9,7 +9,7 @@ FactoryBot.define do
 
   factory :application do
     name { Faker::Name.name_with_middle }
-    street_address { Faker::Address.street_address }
+    address { Faker::Address.street_address }
     city { Faker::Address.city }
     state { Faker::Address.state_abbr}
     zip { Faker::Address.zip}

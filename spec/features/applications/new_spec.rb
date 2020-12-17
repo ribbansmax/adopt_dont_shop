@@ -5,7 +5,7 @@ RSpec.describe 'Create new Application' do
     visit "applications/new"
 
     fill_in "name", with: 'Jim'
-    fill_in "street_address", with: 'road avenue'
+    fill_in "address", with: 'road avenue'
     fill_in "city", with: 'Pitt'
     fill_in "state", with: ''
     fill_in "zip", with: 12345
@@ -17,7 +17,7 @@ RSpec.describe 'Create new Application' do
     expect(page).to have_content("Application is missing: state")
 
     fill_in "name", with: 'Jim'
-    fill_in "street_address", with: 'road avenue'
+    fill_in "address", with: 'road avenue'
     fill_in "city", with: 'Pitt'
     fill_in "state", with: 'PA'
     fill_in "zip", with: 12345
