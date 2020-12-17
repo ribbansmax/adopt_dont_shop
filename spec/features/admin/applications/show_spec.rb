@@ -47,4 +47,16 @@ RSpec.describe 'Admin Application show page' do
 
     expect(page).to have_content("Application Status: Approved")
   end
+
+  it "Can only let one application approve a pet" do
+    visit "/admin/applications/#{@app1.id}"
+    
+    click_button "Approve #{@pet1.name}"
+    click_button "Approve #{@pet2.name}"
+
+    visit "/admin/applications/#{@app2.id}"
+
+    expect(page).to have_no_button("Approve #{@pet1.name}")
+    expect(page).to have_content("#{@pet1.name} has been approved for adoption")
+  end
 end

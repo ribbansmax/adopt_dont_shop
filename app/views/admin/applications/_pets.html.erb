@@ -5,6 +5,7 @@
 <%= "Approved!" if adopt.approved == true %>
 <%= "Rejected!" if adopt.approved == false %>
 <%= (button_to "Approve #{pet.name}", "/adoptions/#{adopt.id}", method: :patch, params: {app: "#{params[:id]}"}) if adopt.approved == nil && pet.adoptable %>
+<%= "has been approved for adoption" if pet.adoptable == false %>
 <%= (button_to "Reject #{pet.name}", "/adoptions/#{adopt.id}", method: :patch, params: {app: "#{params[:id]}", reject: true}) if adopt.approved == nil %></li>
 </li>
 <% end %>
