@@ -4,7 +4,7 @@
 <li><%= pet.name %>
 <%= "Approved!" if adopt.approved == true %>
 <%= "Rejected!" if adopt.approved == false %>
-<%= (button_to "Approve #{pet.name}", "/adoptions/#{adopt.id}", method: :patch, params: {app: "#{params[:id]}"}) if adopt.approved == nil %>
+<%= (button_to "Approve #{pet.name}", "/adoptions/#{adopt.id}", method: :patch, params: {app: "#{params[:id]}"}) if adopt.approved == nil && pet.adoptable %>
 <%= (button_to "Reject #{pet.name}", "/adoptions/#{adopt.id}", method: :patch, params: {app: "#{params[:id]}", reject: true}) if adopt.approved == nil %></li>
 </li>
 <% end %>

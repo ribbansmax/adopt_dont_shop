@@ -19,4 +19,10 @@ class Application < ApplicationRecord
   def address
     "#{self.street_address} #{self.city}, #{self.state} #{self.zip}"
   end
+
+  def claim_pets
+    pets.each do |pet|
+      pet.update!(adoptable: false)
+    end
+  end
 end

@@ -6,6 +6,7 @@ class Adoption < ApplicationRecord
     if Adoption.where(application_id: app_id).select(:approved).all? {|adopt| adopt[:approved] == true}
       app = Application.find(app_id)
       app.update(approved: true)
+      app.claim_pets
       app.status
     elsif Adoption.where(application_id: app_id).select(:approved).any? {|adopt| adopt[:approved] == false}
       app = Application.find(app_id)
