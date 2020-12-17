@@ -13,8 +13,8 @@ RSpec.describe 'Admin Shelters index page' do
   it "Displays the shelters in reverse alphabetical order" do
     visit "/admin/shelters"
 
-    expect(page.all("shelter")[0]).to have_content("#{@shelter2.name}")
-    expect(page.all("shelter")[1]).to have_content("#{@shelter3.name}")
-    expect(page.all("shelter")[2]).to have_content("#{@shelter1.name}")
+    expect(page.all(".shelter")[0]).to have_content("#{@shelter2.name}")
+    expect(page.all(".shelter")[1]).to have_content("#{@shelter3.name}")
+    expect(page.all(".shelter")[2]).to have_content("#{@shelter1.name}")
   end
 end
