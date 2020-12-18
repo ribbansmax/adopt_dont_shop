@@ -8,6 +8,10 @@ class Shelter < ApplicationRecord
     Shelter.where(id: shelter_ids)
   end
 
+  def pending_pets
+    pets.joins(:adoptions).where("adoptions.approved is NULL").select("pets.*, adoptions.application_id as app_id")
+  end
+
   def average_pet_age
     pets.average(:approximate_age)
   end

@@ -1,6 +1,6 @@
 
 <% @adoptions.each do |adopt|%>
-<% pet = Pet.find(adopt.pet_id)%>
+<% pet = adopt.pet%>
 <li><%= pet.name %>
 <%= "Approved!" if adopt.approved == true %>
 <%= "Rejected!" if adopt.approved == false %>

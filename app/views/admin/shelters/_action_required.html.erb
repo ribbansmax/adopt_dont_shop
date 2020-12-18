@@ -1,0 +1,7 @@
+<h3>Action Required</h3>
+<ul>
+<% @pending_pets.each do |pet| %>
+<li><%= "View #{pet.name}'s pending adoption: " %></li>
+<%= button_to "See #{pet.name}'s application", "/admin/applications/#{pet.app_id}", method: :get %>
+<% end %>
+</ul>

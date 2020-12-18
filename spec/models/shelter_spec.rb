@@ -45,4 +45,19 @@ describe Shelter, type: :model do
     expect(@shelter1.adopted_pets).to eq(0)
     expect(@shelter1.adoptable_pets).to eq(3)
   end
+
+  it "can return pending pets" do
+    @shelter1 = Shelter.create!(name: "Shady Shelter", address: "123 Shady Ave", city: "Denver", state: "CO", zip: 80011)
+    @pet1 = @shelter1.pets.create!(image:"", name: "Thor", description: "dog", approximate_age: 2, sex: "male")
+    @pet2 = @shelter1.pets.create!(image:"", name: "Athena", description: "cat", approximate_age: 3, sex: "female")
+    @pet3 = @shelter1.pets.create!(image:"", name: "Zeus", description: "dog", approximate_age: 4, sex: "male")
+
+    @app1 = Application.create!(name: "Dunlap", address: "104 Pine Haven", city: "Colchester", state: "VT", zip: "05446", approved: nil, completed: true)
+
+    Adoption.create!(pet_id: @pet1.id, application_id: @app1.id)
+    Adoption.create!(pet_id: @pet2.id, application_id: @app1.id)
+
+    pending_pets = @shelter1.pending_pets
+    expect(pending_pets.first).to eq(@pet1)
+  end
 end
