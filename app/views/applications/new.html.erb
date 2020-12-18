@@ -1,0 +1,9 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+<%= form_tag create_app_path, method: :post do %>
+  <%= render "form"%>
+  <%= submit_tag 'create' %>
+<% end %>

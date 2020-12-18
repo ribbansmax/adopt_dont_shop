@@ -1,0 +1,5 @@
+<%= form_tag update_app_path, method: :patch do %>
+  <%= label_tag "Describe why you are a good home for these pets" %>
+  <%= text_field_tag "describe"%>
+  <%= submit_tag 'submit' %>
+<% end %>

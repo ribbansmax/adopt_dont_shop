@@ -1,0 +1,6 @@
+<h1>Shelter:</h1>
+<%= @shelter.name %>
+<h3>Address: <%= @shelter.full_address %></h3>
+<%= button_to "BACK", "/admin/shelters", method: :get %>
+<%= render "statistics" %>
+<%= render "action_required" if @pending_pets != [] %>
